@@ -1,18 +1,10 @@
-import { useState,useEffect } from 'react';
+import { useState } from 'react';
 const SearchForm=({onSearch})=>{
 
     const [SearchStr, setSearchStr] = useState('');
     const [searchOption, setsearchOption] = useState('shows');
     // mount rerender unmount
     // useEffect
-    console.log("COMPONENT RERENDER");
-    useEffect(()=>{   
-      console.log("COMPONENT SEARCH-OPTION",searchOption);
-
-      return ()=>{
-        console.log('NEXT BEFORE  UNMOUNT',searchOption);
-      }
-    },[searchOption]) 
     const onSearchInputChnage = ev => {         
         setSearchStr(ev.target.value); 
       };
