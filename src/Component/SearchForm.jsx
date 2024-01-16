@@ -13,7 +13,7 @@ const SearchForm=({onSearch})=>{
       };
     const onSubmit=(ev)=>
     {
-        ev.preventDefault();
+        ev.preventDefault() ;
         const option={
             q:SearchStr,
             searchOption
