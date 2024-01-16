@@ -1,11 +1,20 @@
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 const SearchForm=({onSearch})=>{
 
     const [SearchStr, setSearchStr] = useState('');
     const [searchOption, setsearchOption] = useState('shows');
+    // mount rerender unmount
+    // useEffect
+    console.log("COMPONENT RERENDER");
+    useEffect(()=>{   
+      console.log("COMPONENT SEARCH-OPTION",searchOption);
 
-    const onSearchInputChnage = ev => {
-        setSearchStr(ev.target.value);
+      return ()=>{
+        console.log('NEXT BEFORE  UNMOUNT',searchOption);
+      }
+    },[searchOption]) 
+    const onSearchInputChnage = ev => {         
+        setSearchStr(ev.target.value); 
       };
       // Change Radio button
       const onRadioChange = ev => {
