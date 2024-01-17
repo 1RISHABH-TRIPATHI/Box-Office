@@ -1,11 +1,14 @@
 import {BrowserRouter,Routes,Route  } from 'react-router-dom';
+import {QueryClient, QueryClientProvider} from '@tanstack/react-query'
 import Home from './pages/home';
 import Contact from './pages/contact';
-
 import MainPageLayout from './Component/MainPageLayout';
 import Show from './pages/Show';
+const queryClient= new QueryClient();
 function App() {
-  return <>
+  return (
+  
+  <QueryClientProvider client={queryClient}>
     <BrowserRouter>
       <Routes>
        <Route element={<MainPageLayout />}>
@@ -17,7 +20,8 @@ function App() {
        <Route path='*' element={<div>No Found</div>} />
       </Routes>    
     </BrowserRouter>
-  </>
+    </QueryClientProvider>
+  )
 }
 
 export default App;
