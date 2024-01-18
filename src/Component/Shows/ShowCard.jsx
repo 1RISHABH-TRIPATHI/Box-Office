@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 const ShowCard=({name,image,id,summary,onStarMeClick,isStarred})=>{
     
     return <div>

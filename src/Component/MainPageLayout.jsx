@@ -4,8 +4,8 @@ import Navs from "./Navs";
 const MainPageLayout = ({ children })=>
 {
     return <div>
-        Jay Shree Ram 
-
+        <h2>Jay Shree Ram </h2>
+        Are youn looking for a movie or an Actors
     <Navs />
      <Outlet />
     </div>

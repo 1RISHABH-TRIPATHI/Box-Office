@@ -15,10 +15,10 @@ const ShowGrid = ({ shows }) => {
       {shows.map(data => (
         <ShowCard
           key={data.show.id}
-          summary={data.show.summary}
           name={data.show.name}
           id={data.show.id}
           image={data.show.image ? data.show.image.medium : '/notImage.png'}
+          summary={data.show.summary}
           onStarMeClick={onStarMeClick}
           isStarred={startedShow.includes(data.show.id)}
         />
