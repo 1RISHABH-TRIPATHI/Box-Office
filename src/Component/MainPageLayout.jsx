@@ -5,6 +5,7 @@ const MainPageLayout = ({ children })=>
 {
     return <div>
         Jay Shree Ram 
+
     <Navs />
      <Outlet />
     </div>
