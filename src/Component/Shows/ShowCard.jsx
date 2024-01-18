@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-const ShowCard=({name,image,id,summary,onStarMeClick})=>{
+const ShowCard=({name,image,id,summary,onStarMeClick,isStarred})=>{
     
     return <div>
         <div>
@@ -11,7 +11,9 @@ const ShowCard=({name,image,id,summary,onStarMeClick})=>{
         <div>
             {/* <Link to={`/show/${id}`}>Read more</Link> */}
             <a href={`/show/${id}`} target="_blank"rel="noreferrer"  >Read more</a>
-            <button type="button" onClick={()=>{onStarMeClick(id)}}>Star me </button>
+            <button type="button" onClick={()=>onStarMeClick(id)}>
+                {isStarred ? 'UnStar Me' : 'star Me'}
+                 </button>
         </div>
     </div>
 }
