@@ -23,12 +23,12 @@ const startedShowReducer = (currentStarted, action) => {
       case 'UNSTAR':
         return currentStarted.filter(showId => showId !== action.showId);
       default:
-        return currentStarted;
+        return currentStarted;  
     }
   };
 const ShowGrid = ({ shows }) => {
   
-  const [startedShow, dispatchStated] = usePersisredReducer(startedShowReducer, [],'starredShows');
+  const [startedShow, dispatchStated] =usePersisredReducer(startedShowReducer, [],'starredShows');
 
   const onStarMeClick = showId => {
     const isStarred = startedShow.includes(showId);
