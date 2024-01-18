@@ -1,8 +1,6 @@
 const BASE_URL='https://api.tvmaze.com';
 const apiGet= async (queryString)=>{
-
-   
-    const response=  await  
+     const response=  await  
     fetch(`${BASE_URL}${queryString}`);
     // `https://api.tvmaze.com/search/shows?q=${setSearchStr}
     const body= await response.json();

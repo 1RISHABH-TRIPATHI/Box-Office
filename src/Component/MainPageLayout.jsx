@@ -6,7 +6,7 @@ const MainPageLayout = ({ children })=>
     return <div>
         <h2>Jay Shree Ram </h2>
         Are youn looking for a movie or an Actors
-    <Navs />
+      <Navs />
      <Outlet />
     </div>
 }
