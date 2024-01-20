@@ -1,15 +1,17 @@
-import { useReducer, useState } from 'react';
+import { useState } from 'react';
 import { searchForShow, searchForPeople } from '../API/tvmaze';
 import { useQuery } from '@tanstack/react-query';
 import SearchForm from '../Component/SearchForm';
 import ShowGrid from '../Component/Shows/ShowGrid';
 import ActorGrid from '../Component/Actors/ActorGrid';
+import { TextCenter } from '../Component/comman/TextCenter';
+
 const Home = () => {
   const [filter, setFilter] = useState(null);
 
 
   const { data: apiData, error: apiDataError } = useQuery({
-    queryKey: ['todos', filter],
+    queryKey: ['Search', filter],
     queryFn: () =>
       filter.searchOption === 'shows'
         ? searchForShow(filter.q)
@@ -26,10 +28,10 @@ const Home = () => {
   // api data
   const renderapiData = () => {
     if (apiDataError) {
-      return <div> Error Occured: {apiDataError.message} </div>;
+      return <TextCenter> Error Occured: {apiDataError.message} </TextCenter>;
     }
     if (apiData?.length === 0) {
-      return <div>No found</div>;
+      return <TextCenter>No found</TextCenter>;
     }
     if (apiData) {
       if (apiData[0].show) {

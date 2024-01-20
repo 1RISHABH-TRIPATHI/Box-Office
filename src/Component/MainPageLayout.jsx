@@ -1,11 +1,11 @@
 import { Outlet } from "react-router-dom";
 import Navs from "./Navs";
+import AppTitle from './AppTitle'
 // eslint-disable-next-line no-unused-vars
 const MainPageLayout = ({ children })=>
 {
     return <div>
-        <h2>Jay Shree Ram </h2>
-        Are youn looking for a movie or an Actors
+       <AppTitle />
       <Navs />
      <Outlet />
     </div>

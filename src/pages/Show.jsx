@@ -1,10 +1,13 @@
 import {useParams ,Link} from "react-router-dom"
 import {useQuery} from '@tanstack/react-query'
+import styled from "styled-components";
 import { getShowById} from "../API/tvmaze";
 import ShowMainData from "../Component/Shows/ShowMainData";
 import Details from "../Component/Shows/Details";
 import Seasons from "../Component/Shows/Seasons";
 import Cast from "../Component/Shows/Cast";
+import { TextCenter } from "../Component/comman/TextCenter";
+
 const  Show=() =>{
 
 
@@ -21,12 +24,14 @@ const  Show=() =>{
     // }
     if(showError)
     {
-      return <div>We have an Error { showError.message}</div>
+      return <TextCenter>We have an Error { showError.message}</TextCenter>
     }
     if(showData)
     {
-      return <div> 
-        <Link to="/"> Go Back to Home </Link>
+      return <ShowPageWrapper> 
+        <BackHomeWrapper>
+          <Link to="/"> Go Back to Home </Link>
+        </BackHomeWrapper>
           <ShowMainData
             image={showData.image}
             name={showData.name}
@@ -34,32 +39,65 @@ const  Show=() =>{
             summary={showData.summary}
             genres={showData.genres}
           />
-          <div>
+          <InfoBlock>
             <h2>Details</h2>
             <Details 
               status={showData.status}
               premiered={showData.premiered}
               network={showData.network}
             />
-          </div>
-          <div>
+          </InfoBlock>
+          <InfoBlock>
             <h2>Seasons </h2>
             <Seasons
             seasons={showData._embedded.seasons}  />
-          </div>
-          <div>
+          </InfoBlock>
+          <InfoBlock>
             <h2>Cast </h2>
             <Cast 
 
             cast={showData._embedded.cast}
             />
-          </div>
-        </div>
+          </InfoBlock>
+        </ShowPageWrapper>
     }
   return (
-    <div>
+    <TextCenter>
         Show data loading 
-    </div>
+    </TextCenter>
   )
 }
 export default  Show;
+
+
+const BackHomeWrapper = styled.div`
+  margin-bottom: 30px;
+  text-align: left;
+  a {
+    padding: 10px;
+    color: ${({ theme }) => theme.mainColors.dark};
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+`;
+
+const ShowPageWrapper = styled.div`
+  margin: auto;
+  @media only screen and (min-width: 768px) {
+    max-width: 700px;
+  }
+  @media only screen and (min-width: 992px) {
+    max-width: 900px;
+  }
+`;
+
+const InfoBlock = styled.div`
+  margin-bottom: 40px;
+  h2 {
+    margin: 0;
+    margin-bottom: 30px;
+    font-size: 22px;
+  }
+`;

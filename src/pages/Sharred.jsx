@@ -1,36 +1,28 @@
-import { getShowById, getShowByIds } from '../API/tvmaze';
+import { getShowByIds } from '../API/tvmaze';
 import ShowGrid from '../Component/Shows/ShowGrid';
-import {useStarredShow} from '../lib/useStarredShow'
+import { useStarredShow } from '../lib/useStarredShow';
 import { useQuery } from '@tanstack/react-query';
-const Starred=() =>{
-
-  const [startedShowID] =useStarredShow();
+import { TextCenter } from '../Component/comman/TextCenter';
+const Starred = () => {
+  const [startedShowID] = useStarredShow();
 
   const { data: starredShows, error: starredShowsError } = useQuery({
     queryKey: ['starred', startedShowID],
-    queryFn: async () => getShowByIds(startedShowID).then(result=> 
-      result.map(show=>({show}))),
+    queryFn:  () =>
+      getShowByIds(startedShowID).then(result =>
+        result.map(show => ({ show }))
+      ),
     refetchOnWindowFocus: false,
   });
 
-  if(starredShows?.length=== 0)
-  {
-    return <div> No Shows were Starred </div>
+  if (starredShows?.length === 0) {
+    return <TextCenter> No Shows were Starred </TextCenter>;
+  } else if (starredShows?.length > 0) {
+    return <ShowGrid shows={starredShows} />;
   }
-  else if(starredShows?.length>0)
-  {
-    return <ShowGrid shows={ starredShows} />
+  if (starredShowsError) {
+    return <TextCenter> Error Occured: {starredShowsError.message}</TextCenter>;
   }
-  if(starredShowsError)
-  {
-    return <div> Error Occured: {starredShowsError.message}</div>
-  }
-  return (
-    <div> 
-      Shows Are Loading...
-    </div> 
-    
-  );
-  
-}
+  return <TextCenter>Shows Are Loading...</TextCenter>;
+};
 export default Starred;
