@@ -4,16 +4,30 @@
   "icons": [
 
     {
-      "src": "maskable_icon.png",
+      "src": "icon1.png",
       "type": "image/png",
-      "sizes": "512x51",
+      "sizes": "128x128",
+      "purpose": "any"
+
+    },
+    {
+      "src": "icon.png",
+      "type": "image/png",
+      "sizes": "96x96",
       "purpose": "maskable"
 
     },
     {
-      "src": "OIP_icon.png",
+      "src": "icon2.png",
       "type": "image/png",
-      "sizes": "512x51",
+      "sizes": "192x192",
+      "purpose": "maskable"
+
+    },
+    {
+      "src": "icon3.png",
+      "type": "image/png",
+      "sizes": "48x48",
       "purpose": "maskable"
 
     }
