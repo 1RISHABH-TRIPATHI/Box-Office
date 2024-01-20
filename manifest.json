@@ -9,7 +9,15 @@
       "sizes": "512x51",
       "purpose": "maskable"
 
+    },
+    {
+      "src": "OIP_icon.png",
+      "type": "image/png",
+      "sizes": "512x51",
+      "purpose": "maskable"
+
     }
+
   ],
   "start_url": ".",
   "display": "standalone",
