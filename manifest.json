@@ -18,9 +18,9 @@
       "sizes": "512x51"
     },
     {
-      "src": "Op1.png",
+      "src": "Op2.png",
       "type": "image/png",
-      "sizes": "512x51",
+      "sizes": "512x512",
       "purpose": "maskable"
 
     }
