@@ -1,11 +1,12 @@
 import styled from 'styled-components';
+import notImage from '../../lib/notImage.png'
 const Cast = ({ cast }) => {
   return (
     <CastList>
       {cast.map(({ person, character, voice }) => (
         <div key={person.id} className="cast-item">
           <div className="pic-wrapper">
-            <img src={person.image ? person.image.medium : '/notImage.png'} />
+            <img src={person.image ? person.image.medium : notImage} />
           </div>
 
           <div className="actor">
