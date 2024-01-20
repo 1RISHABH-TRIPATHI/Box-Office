@@ -18,18 +18,23 @@
 
     },
     {
-      "src": "icon2.png",
+      "src": "maskable_ic.png",
       "type": "image/png",
-      "sizes": "192x192",
+      "sizes": "96x96",
       "purpose": "maskable"
 
     },
     {
-      "src": "icon3.png",
+      "src": "maskable_i.png",
+      "sizes": "196x196",
       "type": "image/png",
-      "sizes": "48x48",
-      "purpose": "maskable"
-
+      "purpose": "any"
+    },
+    {
+      "src": "icon.png",
+      "sizes": "196x196",
+      "type": "image/png",
+      "purpose": "maskable" 
     }
 
   ],
