@@ -1,11 +1,24 @@
 import styled from 'styled-components';
 import { SearchCard, SearchImgWrapper } from '../comman/SearchCard';
+import { useRef } from 'react';
 import { StarIcon } from '../comman/StarIcon';
 const ShowCard = ({ name, image, id, summary, onStarMeClick, isStarred }) => {
 
   const summaryStripped = summary
   ? summary.split(' ').slice(0, 10).join(' ').replace(/<.+?>/g, '') + '...'
   : 'No description';
+
+  const starBtnRef=useRef();
+  const handleStarClick=()=>
+  {
+    onStarMeClick(id)
+    const starBtnE1=starBtnRef.current;
+    if(!starBtnE1) return ;
+    if(isStarred)
+    starBtnE1.classList.remove('animate');
+    else
+    starBtnE1.classList.add('animate');
+  }
   return (
     <SearchCard>
       <SearchImgWrapper>
@@ -17,11 +30,14 @@ const ShowCard = ({ name, image, id, summary, onStarMeClick, isStarred }) => {
 
       <ActionSection>
         {/* <Link to={`/show/${id}`}>Read more</Link> */}
-        <a href={`/show/${id}`} target="_blank" rel="noreferrer">
-          Read more
-        </a>
-        <StarBtn type="button" onClick={() => onStarMeClick(id)}>
-            <StarIcon active={isStarred} />
+        <a href={`/show/${id}`} target="_blank" rel="noreferrer">Read more</a>
+        <StarBtn 
+        ref={starBtnRef}
+        type="button" 
+        onClick={handleStarClick} 
+        >
+          <StarIcon active={isStarred} />
+
         </StarBtn>
       </ActionSection>
     </SearchCard>
@@ -55,5 +71,21 @@ const StarBtn = styled.button`
   align-items: center;
   &:hover {
     cursor: pointer;
+  }
+  &.animate {
+    ${StarIcon} {
+      animation: increase 0.75s ease-in forwards;
+      @keyframes increase {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(3) rotate(45deg);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+    }
   }
 `;
