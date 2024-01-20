@@ -10,15 +10,6 @@ root.render(
     <App />
   </React.StrictMode>
 );
-
-
-
-
-
-
-
-
-
-
-serviceWorkerRegistration.unregister();
+if(process.env.NODE_ENV==='production')
+serviceWorkerRegistration.register();
 reportWebVitals();
